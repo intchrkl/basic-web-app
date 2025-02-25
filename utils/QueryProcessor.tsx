@@ -26,12 +26,12 @@ export default function QueryProcessor(query: string): string {
     const num2 = parseInt(plusMatch[2], 10);
     return (num1 + num2).toString();
   }
-
+  // which of the following numbers is the largest: 88, 60, 51?
   const maxMatch = query.toLowerCase().match(/which of the following numbers is the largest: (\d+), (\d+), (\d+)\?/);
-  if (plusMatch) {
-    const num1 = parseInt(plusMatch[1], 10);
-    const num2 = parseInt(plusMatch[2], 10);
-    const num3 = parseInt(plusMatch[3], 10);
+  if (maxMatch) {
+    const num1 = parseInt(maxMatch[1], 10);
+    const num2 = parseInt(maxMatch[2], 10);
+    const num3 = parseInt(maxMatch[3], 10);
     return Math.max(num1, num2, num3).toString();
   }
   
