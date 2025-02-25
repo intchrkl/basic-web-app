@@ -54,6 +54,22 @@ const squareCubeMatch = query.toLowerCase().match(/which of the following number
     const result = numbers.filter(isPerfectSixthPower);
     return result.length ? result.join(", ") : "None";
   }
+
+  const primeMatch = query.toLowerCase().match(/which of the following numbers are primes: ([\d, ]+)\?/);
+  if (primeMatch) {
+    const numbers = primeMatch[1].split(", ").map(num => parseInt(num, 10));
+    const isPrime = (num: number) => {
+      if (num < 2) return false;
+      for (let i = 2; i * i <= num; i++) {
+        if (num % i === 0) return false;
+      }
+      return true;
+    };
+    const result = numbers.filter(isPrime);
+    return result.length ? result.join(", ") : "None";
+  }
+  
+  return "";
   
   return "";
 }
