@@ -48,7 +48,7 @@ export default function QueryProcessor(query: string): string {
   if (minusMatch) {
     const num1 = parseInt(minusMatch[1], 10);
     const num2 = parseInt(minusMatch[2], 10);
-    return (Math.pow(num1, num2)).toString();
+    return (num1 ** num2).toString();
   }
 
   const powerMatch = query.toLowerCase().match(/what is (\d+) to the power of (\d+)\?/);
@@ -64,7 +64,7 @@ export default function QueryProcessor(query: string): string {
     const isPerfectSixthPower = (num: number) => {
       const squareRoot = Math.round(Math.pow(num, 1/2));
       const cubeRoot = Math.round(Math.pow(num, 1/3));
-      return (squareRoot ** 2 === num) && (squareRoot ** 3 === num);
+      return (squareRoot ** 2 === num) && (cubeRoot ** 3 === num);
     };
     const result = numbers.filter(isPerfectSixthPower);
     return result.length ? result.join(", ") : "None";
