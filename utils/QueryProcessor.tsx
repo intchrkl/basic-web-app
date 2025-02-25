@@ -27,7 +27,7 @@ export default function QueryProcessor(query: string): string {
     return (num1 + num2).toString();
   }
 
-  const maxMatch = query.toLowerCase().match(/which of the following nubmers is the largest: (\d+), (\d+), (\d+)\?/);
+  const maxMatch = query.toLowerCase().match(/which of the following numbers is the largest: (\d+), (\d+), (\d+)\?/);
   if (plusMatch) {
     const num1 = parseInt(plusMatch[1], 10);
     const num2 = parseInt(plusMatch[2], 10);
