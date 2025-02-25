@@ -20,5 +20,13 @@ export default function QueryProcessor(query: string): string {
     return "Hello World"
   }
 
+  const plusMatch = query.toLowerCase().match(/what is (\d+) plus (\d+)\?/);
+  if (plusMatch) {
+    const num1 = parseInt(plusMatch[1], 10);
+    const num2 = parseInt(plusMatch[2], 10);
+    return (num1 + num2).toString();
+  }
+
+  
   return "";
 }
