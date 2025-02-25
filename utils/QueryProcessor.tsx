@@ -55,8 +55,9 @@ export default function QueryProcessor(query: string): string {
   if (squareCubeMatch) {
     const numbers = squareCubeMatch[1].split(", ").map(num => parseInt(num, 10));
     const isPerfectSixthPower = (num: number) => {
-      const root = Math.round(Math.pow(num, 1/6));
-      return root ** 6 === num;
+      const squareRoot = Math.round(Math.pow(num, 1/2));
+      const cubeRoot = Math.round(Math.pow(num, 1/3));
+      return (squareRoot ** 2 === num) && (squareRoot ** 3 === num);
     };
     const result = numbers.filter(isPerfectSixthPower);
     return result.length ? result.join(", ") : "None";
