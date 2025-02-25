@@ -44,7 +44,14 @@ export default function QueryProcessor(query: string): string {
     return (num1 * num2).toString();
   }
 
-const squareCubeMatch = query.toLowerCase().match(/which of the following numbers is both a square and a cube: ([\d, ]+)\?/);
+  const minusMatch = query.toLowerCase().match(/what is (\d+) minus (\d+)\?/);
+  if (minusMatch) {
+    const num1 = parseInt(minusMatch[1], 10);
+    const num2 = parseInt(minusMatch[2], 10);
+    return (num1 - num2).toString();
+  }
+
+  const squareCubeMatch = query.toLowerCase().match(/which of the following numbers is both a square and a cube: ([\d, ]+)\?/);
   if (squareCubeMatch) {
     const numbers = squareCubeMatch[1].split(", ").map(num => parseInt(num, 10));
     const isPerfectSixthPower = (num: number) => {
