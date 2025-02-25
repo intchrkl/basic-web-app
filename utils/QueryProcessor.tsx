@@ -48,7 +48,14 @@ export default function QueryProcessor(query: string): string {
   if (minusMatch) {
     const num1 = parseInt(minusMatch[1], 10);
     const num2 = parseInt(minusMatch[2], 10);
-    return (num1 - num2).toString();
+    return (Math.pow(num1, num2)).toString();
+  }
+
+  const powerMatch = query.toLowerCase().match(/what is (\d+) to the power of (\d+)\?/);
+  if (powerMatch) {
+    const num1 = parseInt(powerMatch[1], 10);
+    const num2 = parseInt(powerMatch[2], 10);
+    return (num1 ** num2).toString();
   }
 
   const squareCubeMatch = query.toLowerCase().match(/which of the following numbers is both a square and a cube: ([\d, ]+)\?/);
@@ -79,5 +86,4 @@ export default function QueryProcessor(query: string): string {
   
   return "";
   
-  return "";
 }
