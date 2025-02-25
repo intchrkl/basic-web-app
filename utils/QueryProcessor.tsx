@@ -28,6 +28,14 @@ export default function QueryProcessor(query: string): string {
     return (num1 + num2).toString();
   }
 
+  const plusPlusMatch = query.toLowerCase().match(/what is (\d+) plus (\d+) plus (\d+)\?/);
+  if (plusPlusMatch) {
+    const num1 = parseInt(plusPlusMatch[1], 10);
+    const num2 = parseInt(plusPlusMatch[2], 10);
+    const num3 = parseInt(plusPlusMatch[3], 10);
+    return (num1 + num2 + num3).toString();
+  }
+
   // which of the following numbers is the largest: 88, 60, 51?
   const maxMatch = query.toLowerCase().match(/which of the following numbers is the largest: (\d+), (\d+), (\d+)\?/);
   if (maxMatch) {
